@@ -10,44 +10,47 @@
 
     ConsoleLog("Session status: {$sessionStatus}");
 
-    // Csak bejelentkezéssel lehet az oldalt megtekinteni
+    // Check if the user is logged in
     if(!isset($_SESSION['username'])){
+	    ConsoleLog("Session variable 'username': not set");
         header("Location:".ROOT_URL. "login.php");
-	ConsoleLog("Session variable 'username': not set");
     }
 
-    // Navbar váltogatásnál ne maradjanak bent az értékek (módosítás megszakítása után)
+    // Changing page from editing post: input characters disappear
     if(isset($_SESSION["editPost"])) {
         unset($_SESSION["editPost"]);
-	ConsoleLog("Session vaiable 'editPost': unset");
+	    ConsoleLog("Session vaiable 'editPost': unset");
     }
 
-    // Adatbázis műveletek
+    // Print posts from database
     $query = "SELECT * FROM post ORDER BY created_at DESC";
     $result = mysqli_query($conn, $query);
     $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    // Jogosult felhasználók gombjai
+    // Post button variables
     $deleteButton = '<button name="deletePost" type="submit" class="btn btn-outline-danger float-end rounded">Delete</button>';
     $editButton = '<button name="editPost" type="submit" class="btn btn-outline-primary float-end me-3 rounded-pill">Edit</button>';
 
-    // Edit gomb
+    // Edit button:
     if(isset($_POST["editPost"])) {
+        // Set Session variables: addblog.php will edit the post, instead of adding one more
         $_SESSION["editPost"] = true;
         $_SESSION["editPostID"] = $_POST["post_id"];
+        ConsoleLog("Editing post: {$_POST["post_id"]} id");
         header('Location: '. ROOT_URL .'/addblog.php');
     }
 
-    // Delete gomb
+    // Delete button:
     if(isset($_POST["deletePost"])) {
         $postID = mysqli_real_escape_string($conn, $_POST["post_id"]);
-        $postID = intval($postID);
         $deleteQuery = 'DELETE FROM post WHERE id = '. $postID;
 
         if(mysqli_query($conn, $deleteQuery)) {
+            ConsoleLog("Deleting post successful: {$_POST["post_id"]} id");
             header('Location: ' .ROOT_URL. 'index.php');
         }
         else {
+            ConsoleLog("Deleting post failed: {$_POST["post_id"]} id");
             echo mysqli_error($conn);
         }
     }

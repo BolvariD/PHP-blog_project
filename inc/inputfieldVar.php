@@ -1,4 +1,5 @@
 <?php
+    // Bootstrap div class variables
     $container = "container";
     $backgroundColor = "bg-secondary bg-gradient";
     $backgroundColorStlye = 'style="background-color: #ebf2fa;"';

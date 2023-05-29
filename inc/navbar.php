@@ -1,9 +1,3 @@
-<?php 
-    if($_SESSION["permission"] == "admin") {
-        $adminButton = true;
-    }
-?>
-
 <nav class="navbar navbar-default sticky-top bg-white">
     <ul class="nav nav-pills navbar-left">
         <li class="nav-item">
@@ -14,12 +8,6 @@
         </li>
     </ul>
     <ul class="nav nav-pills navbar-right">
-        <li class="nav-item">
-            <?php 
-            if(isset($adminButton)) {
-                echo "<a class='nav-link rounded "; if(isset($adminActive)) {echo "active";}; echo "' href='admin.php'>Admin</a>";
-            } ?>
-        </li>
         <li class="nav-item">
             <a class="nav-link rounded <?php if(isset($accountActive)) {echo "active";} ?>" href="account.php">Account</a>
         </li>

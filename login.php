@@ -18,12 +18,15 @@
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
 
+        // Check if query is empty -> 
         if(!empty($row)) {
             $databaseUser = $row["username"];
             $databasePass = $row["password"];
             $permission = $row["permission"];
+            // Check if input password matches with database hashed password, and username matches with database username
             if(password_verify($inputPass, $databasePass) && $inputName == $databaseUser) {
                 ConsoleLog("Login sucessful");
+                // Session variables for later uses
                 $_SESSION["username"] = $inputName;
                 $_SESSION["permission"] = $permission;
                 ConsoleLog("Session variables set: username, permission");
@@ -36,7 +39,7 @@
         }
         else {
             $loginFailed = true;
-            ConsoleLog("Login failed: username does not exist");
+            ConsoleLog("Login failed: no username found");
         }
     }
 ?>
@@ -46,14 +49,14 @@
 <body>
 <div class="<?php echo "$container $containerWidth $margin $padding $edge $opacity"; ?>" <?php echo $backgroundColorStlye;?>>
     <?php
-        if(session_status() == 2) {
-            if(isset($_SESSION['registeredNow'])) {
-                ConsoleLog("Registered");
-                echo $_SESSION['signupSuccessful_msg'];
-                unset($_SESSION['registeredNow']);
-                ConsoleLog("registeredNow variable: unset");
-            }
+        // Registered now message
+        if(isset($_SESSION['registeredNow'])) {
+            ConsoleLog("Registered");
+            echo $_SESSION['signupSuccessful_msg'];
+            unset($_SESSION['registeredNow']);
+            ConsoleLog("registeredNow variable: unset");
         }
+        // Login failed message
         if(isset($_POST["login"])) {
             if($loginFailed) {
                 ConsoleLog("Login failed: loginFailed_msg");

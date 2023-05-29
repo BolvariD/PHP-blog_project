@@ -1,35 +1,46 @@
 <?php
     @session_start();
+    $sessionStatus = session_status();
+
     $title = "Write posts";
     $addPostActive = true;
     
     require("./config/config.php");
     require("./config/db.php");
 
-    // Csak bejelentkezéssel lehet az oldalt megtekinteni
+    ConsoleLog("Session status: {$sessionStatus}");
+
+    // Check if the user is logged in
     if(!isset($_SESSION['username'])) {
-        header("Location:".ROOT_URL. "login.php");
+      ConsoleLog("Session variable 'username': not set");
+      header("Location:".ROOT_URL. "login.php");
     }
 
-    // Poszt hozzáadása, nem módosítás
+    // Add post
     if(isset($_POST["submit"]) && !isset($_SESSION["editPost"])) {
+      ConsoleLog("Adding post: {$_SESSION["username"]}");
+      // Set post variables
       $title = mysqli_real_escape_string($conn, $_POST["title"]);
       $body = mysqli_real_escape_string($conn, $_POST["body"]);
       $author = $_SESSION['username'];
       $created_at = date("Y-m-d H:i:s");
 
+      // Insert post into database
       $query = "INSERT INTO post(title, body, author, created_at) VALUES ('$title', '$body', '$author', '$created_at')";
       
       if(mysqli_query($conn, $query)) {
+        ConsoleLog("Adding post successful: {$_SESSION["username"]}");
         header("Location: ".ROOT_URL."index.php");
       }
       else {
+        ConsoleLog("Adding post failed: {$_SESSION["username"]}");
         echo mysqli_error($conn);
       }
     }
 
-    // Módosításkor átállítja a mezők értékét az eredeti poszt értékeire
+    // On post editing, input fields are filled with the posts data
     if(isset($_SESSION["editPost"])) {
+      ConsoleLog("Editing post: {$_SESSION["username"]}");
       $postID = $_SESSION["editPostID"];
 
       $query = "SELECT * FROM post WHERE id = ". $postID;
@@ -39,13 +50,14 @@
       $title = $editPost[0]["title"];
       $body = $editPost[0]["body"];
 
-      // Módosítás végrehajtása
+      // Edit post
       if(isset($_SESSION["editPost"]) && isset($_POST["submit"])) {
         $newTitle = mysqli_real_escape_string($conn, $_POST["title"]);
         $newBody = mysqli_real_escape_string($conn, $_POST["body"]);
 
         $query = "UPDATE post SET title='$newTitle', body='$newBody', edited=1 WHERE id = {$postID}";
         if(mysqli_query($conn, $query)) {
+          ConsoleLog("Editing post successful: {$_SESSION["username"]}, {$postID} id");
           unset($_SESSION["editPost"]);
           header("Location: ". ROOT_URL. "index.php");
         }
