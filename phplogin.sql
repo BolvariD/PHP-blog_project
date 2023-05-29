@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Máj 28. 14:51
+-- Létrehozás ideje: 2023. Máj 29. 13:40
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -41,10 +41,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `body`, `author`, `created_at`, `edited`) VALUES
-(15, 'asd', 'asd', 'user', '2023-05-25 17:15:59', 0),
 (16, 'dsadsasadd', 'sasda', 'user2', '2023-05-25 17:20:39', 0),
 (17, 'Something', 'in my ass stfu\r\nMMMMMMMMMMMMmdsmmm sdad a\r\na', 'bupa', '2023-05-25 17:43:14', 1),
-(18, 'dsadsa', 'asasd  dsdas asdassadas dasd', 'bupa', '2023-05-25 18:03:26', 1),
 (19, 'asd', ' asdasdasdsa', 'bupa', '2023-05-25 18:26:30', 0),
 (20, 'asdasddsad', 'dsadsddssddsdsds', 'bupa', '2023-05-25 20:06:35', 0),
 (22, 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'bupa', '2023-05-25 23:45:43', 0),
@@ -75,7 +73,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `permission`) VALUES
 (37, 'user2', 'asd', 'user'),
 (39, 'user12', '$2y$10$E.jHdNDbM5fh9vMvcVfmduYHcGfZW6UjA3I1FiYxMqBBf7UIx/Ft6', 'user'),
 (42, 'deleted', '$2y$10$PCosSvHITRnrKjN.8zfm8uAzDdPba4AnOWEmva8hgKtoEOp1S0b/e', 'user'),
-(44, 'checkdb', '$2y$10$mrfIZ0HmpYZkKciynPa6veonS5jIJjrq1fUgvt0HB7.SMlZ3/0rKa', 'user');
+(44, 'checkdb', '$2y$10$mrfIZ0HmpYZkKciynPa6veonS5jIJjrq1fUgvt0HB7.SMlZ3/0rKa', 'user'),
+(45, 'tuncike', '$2y$10$XHuOha7oVVBtkO5/Z9DcCunYNv4cFBnBSvlUL8t16l1M4VtnLEFEC', 'user');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -107,7 +106,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

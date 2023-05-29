@@ -1,16 +1,16 @@
 <?php
     @session_start();
-    console.log("Session started");
     $title = 'Log In';
 
     require("./config/config.php");
     require("./config/db.php");
-    require("./inc/errormsg.php");
+    require("./config/errormsg.php");
     require("./inc/inputfieldVar.php");
-    console.log("Required php files loaded");
+
+    ConsoleLog("Session started");
 
     if(isset($_POST["login"])) {
-	console.log("Input successful");
+        ConsoleLog("Input successful");
         $inputName = mysqli_real_escape_string($conn, $_POST["name"]);
         $inputPass = mysqli_real_escape_string($conn, $_POST["password"]);
 
@@ -23,20 +23,20 @@
             $databasePass = $row["password"];
             $permission = $row["permission"];
             if(password_verify($inputPass, $databasePass) && $inputName == $databaseUser) {
-		console.log("Login sucessful");
+                ConsoleLog("Login sucessful");
                 $_SESSION["username"] = $inputName;
                 $_SESSION["permission"] = $permission;
-		console.log("Session variables set: username, permission");
+                ConsoleLog("Session variables set: username, permission");
                 header('Location: '.ROOT_URL.'/index.php');
             }
             else {
                 $loginFailed = true;
-		console.log("Login failed: wrong password");
+                ConsoleLog("Login failed: wrong password");
             }
         }
         else {
             $loginFailed = true;
-	    console.log("Login failed: username does not exist");
+            ConsoleLog("Login failed: username does not exist");
         }
     }
 ?>
@@ -48,15 +48,15 @@
     <?php
         if(session_status() == 2) {
             if(isset($_SESSION['registeredNow'])) {
-		console.log("Registered");
+                ConsoleLog("Registered");
                 echo $_SESSION['signupSuccessful_msg'];
                 unset($_SESSION['registeredNow']);
-		console.log("registeredNow variable: unset");
+                ConsoleLog("registeredNow variable: unset");
             }
         }
         if(isset($_POST["login"])) {
             if($loginFailed) {
-		console.log("Login failed: loginFailed_msg");
+                ConsoleLog("Login failed: loginFailed_msg");
                 echo $loginFailed_msg;
             }
         }

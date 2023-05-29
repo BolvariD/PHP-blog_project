@@ -5,7 +5,7 @@
 
     require("./config/config.php");
     require("./config/db.php");
-    require("./inc/errormsg.php");
+    require("./config/errormsg.php");
     require("./inc/inputfieldVar.php");
 
     if(!isset($_SESSION['username'])) {

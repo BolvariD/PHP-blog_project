@@ -11,7 +11,5 @@
 
     //Login
     $loginFailed = false;
-    $loginFailed_msg = '<div class="alert alert-dismissible alert-danger rounded"><strong>Oh snap!</strong> <span class="alert-link">Login failed!</span></div>';;
-
-
+    $loginFailed_msg = '<div class="alert alert-dismissible alert-danger rounded"><strong>Oh snap!</strong> <span class="alert-link">Login failed!</span></div>';
 ?>
