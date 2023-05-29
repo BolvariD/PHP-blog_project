@@ -1,22 +1,27 @@
-<?php 
+<?php
     @session_start();
+    $sessionStatus = session_status();
 
     $title = "Blog";
     $homeActive = true;
-    
+
     require("./config/config.php");
     require("./config/db.php");
+
+    ConsoleLog("Session status: {$sessionStatus}");
 
     // Csak bejelentkezéssel lehet az oldalt megtekinteni
     if(!isset($_SESSION['username'])){
         header("Location:".ROOT_URL. "login.php");
+	ConsoleLog("Session variable 'username': not set");
     }
 
     // Navbar váltogatásnál ne maradjanak bent az értékek (módosítás megszakítása után)
     if(isset($_SESSION["editPost"])) {
         unset($_SESSION["editPost"]);
+	ConsoleLog("Session vaiable 'editPost': unset");
     }
-    
+
     // Adatbázis műveletek
     $query = "SELECT * FROM post ORDER BY created_at";
     $result = mysqli_query($conn, $query);

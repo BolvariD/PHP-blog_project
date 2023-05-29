@@ -1,13 +1,13 @@
 <?php
     @session_start();
+    $sessionStatus = session_status();
     $title = 'Log In';
 
     require("./config/config.php");
     require("./config/db.php");
     require("./config/errormsg.php");
     require("./inc/inputfieldVar.php");
-
-    ConsoleLog("Session started");
+    ConsoleLog("Session status: {$sessionStatus}");
 
     if(isset($_POST["login"])) {
         ConsoleLog("Input successful");
