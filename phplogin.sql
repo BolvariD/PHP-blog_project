@@ -30,7 +30,7 @@ CREATE TABLE `post` (
   `created_at` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `edited` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` VALUES (16,'dsadsasadd','sasda','user2','2023-05-25 17:20:39',0),(17,'Something','in my ass stfu\r\nMMMMMMMMMMMMmdsmmm sdad a\r\na','bupa','2023-05-25 17:43:14',1),(19,'asd',' asdasdasdsa','bupa','2023-05-25 18:26:30',0),(20,'asdasddsad','dsadsddssddsdsds','bupa','2023-05-25 20:06:35',0),(22,'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss','sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss','bupa','2023-05-25 23:45:43',0),(23,'asdds','dsd','bupa','2023-05-25 23:47:11',0),(24,'deleted author','deleted author','user','2023-05-26 17:47:28',0),(25,'deldeldeldelde','dedelldeldeldeldeled','deleted','2023-05-26 18:15:12',0),(26,'delete','deletethis','deleted','2023-05-26 18:15:20',0);
+INSERT INTO `post` VALUES (27,'szia borsószem','','bupa','2023-05-29 14:18:24',0),(28,'Kedves Naplóm!','A mai napon láttam egy kacsát. Megettem. Finom volt. :)\r\nÜdvözlettel: Cunk','hatizsak2','2023-05-29 14:19:17',0),(29,'Szia Pite kapitány','én jobban','hatizsak2','2023-05-29 14:20:13',0),(30,'','én sokkal jobban 😡😡😡','bupa','2023-05-29 14:22:17',0);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ CREATE TABLE `user` (
   `password` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `permission` varchar(10) COLLATE utf8mb4_hungarian_ci NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (29,'bupa','$2y$10$xBVhk80Hq.j8njW2i8VO4uXHioukfbX0Gkykem7j.A1zPReNK6ylO','admin'),(37,'user2','asd','user'),(39,'user12','$2y$10$E.jHdNDbM5fh9vMvcVfmduYHcGfZW6UjA3I1FiYxMqBBf7UIx/Ft6','user'),(42,'deleted','$2y$10$PCosSvHITRnrKjN.8zfm8uAzDdPba4AnOWEmva8hgKtoEOp1S0b/e','user'),(44,'checkdb','$2y$10$mrfIZ0HmpYZkKciynPa6veonS5jIJjrq1fUgvt0HB7.SMlZ3/0rKa','user'),(45,'tuncike','$2y$10$XHuOha7oVVBtkO5/Z9DcCunYNv4cFBnBSvlUL8t16l1M4VtnLEFEC','user');
+INSERT INTO `user` VALUES (29,'bupa','$2y$10$xBVhk80Hq.j8njW2i8VO4uXHioukfbX0Gkykem7j.A1zPReNK6ylO','admin'),(37,'user2','asd','user'),(39,'user12','$2y$10$E.jHdNDbM5fh9vMvcVfmduYHcGfZW6UjA3I1FiYxMqBBf7UIx/Ft6','user'),(42,'deleted','$2y$10$PCosSvHITRnrKjN.8zfm8uAzDdPba4AnOWEmva8hgKtoEOp1S0b/e','user'),(44,'checkdb','$2y$10$mrfIZ0HmpYZkKciynPa6veonS5jIJjrq1fUgvt0HB7.SMlZ3/0rKa','user'),(45,'tuncike','$2y$10$XHuOha7oVVBtkO5/Z9DcCunYNv4cFBnBSvlUL8t16l1M4VtnLEFEC','user'),(46,'hatizsak2','$2y$10$SAoDtqRqmjhf4hY9cWcVM.ARg3jjU.BWRxhyPw2vlng1fIWWjT3TO','user');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-29 14:13:46
+-- Dump completed on 2023-05-29 14:38:56

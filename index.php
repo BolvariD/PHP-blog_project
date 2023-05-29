@@ -23,7 +23,7 @@
     }
 
     // Adatbázis műveletek
-    $query = "SELECT * FROM post ORDER BY created_at";
+    $query = "SELECT * FROM post ORDER BY created_at DESC";
     $result = mysqli_query($conn, $query);
     $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -65,14 +65,14 @@
                     <p class="card-text"><?php echo $post["body"]; ?></p>
                     <label class="card-link"><?php echo explode(" ", $post["created_at"])[0]; ?></label>
                     <span class="card-link"><?php echo $post["author"]; ?></span>
-                    <?php 
+                    <?php
                         if($post["edited"] == 1) {
                             echo "<small>Edited</small>";
                         }
                     ?>
                     <form class="w-50 float-end" method="post">
                         <input type="hidden" name="post_id" value="<?php echo $post["id"]; ?>">
-                        <?php 
+                        <?php
                             if($_SESSION["username"] == $post["author"] || $_SESSION["permission"] == "moderator" || $_SESSION["permission"] == "admin") {
                                 echo $deleteButton;
                             }
