@@ -22,12 +22,14 @@
         if(!empty($row)) {
             $databaseUser = $row["username"];
             $databasePass = $row["password"];
+            $databaseID = $row["id"];
             $permission = $row["permission"];
             // Check if input password matches with database hashed password, and username matches with database username
             if(password_verify($inputPass, $databasePass) && $inputName == $databaseUser) {
                 ConsoleLog("Login sucessful");
                 // Session variables for later uses
                 $_SESSION["username"] = $inputName;
+                $_SESSION["userid"] = $databaseID;
                 $_SESSION["permission"] = $permission;
                 ConsoleLog("Session variables set: username, permission");
                 header('Location: '.ROOT_URL.'/index.php');
